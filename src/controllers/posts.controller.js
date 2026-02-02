@@ -16,7 +16,20 @@ const getAllPosts = (req, res) => {
   });
 };
 
+// This function will be our handler for "GET /api/v1/posts/:postId"
+const getPostById = async (req, res) => {
+  // Extract the post ID from the URL parameter
+  const postId = req.params.postId;
+
+  // The controller's job is to send the final response.
+  res.status(200).json({
+    message: `Fetching data for post with ID: ${postId}`,
+    requestedPostId: postId
+  });
+};
+
 // We export the function in an object so we can easily add more functions later.
 module.exports = {
   getAllPosts,
+  getPostById,
 };
